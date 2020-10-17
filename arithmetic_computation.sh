@@ -1,7 +1,7 @@
-#! /bin/bash
+#! /bin/bash 
 
 #Author : Akash Suchak
-#Store the results in a Dictionary for every Computation
+#Sort the results to show computation Result in the Descending Order
 
 #User Input assign to variables
 read -p "Enter Value of A : " a
@@ -29,12 +29,12 @@ if [[ $a ]] && [[ $b ]] && [[ $c ]] && [ $a -eq $a 2>/dev/null ] && [ $b -eq $b 
 	results_expr[expr4]=$result4
 
 else
-     echo "Wrong Input!! Enter Inputs Only."
+     echo "Wrong Input!! Enter Integer Only."
 fi
 
 #Get Values of Dictionary into array
 add_values=`echo ${results_expr[@]}`
 valuesOfDict=($add_values)
 
-#Display Array Values
-echo "Displaying Values From Array : "${valuesOfDict[@]}
+#Display Array Values in Descending orders
+printf '%.2f\n' "${valuesOfDict[@]}" | sort -gr
