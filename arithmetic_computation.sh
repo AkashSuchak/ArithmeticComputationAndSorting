@@ -1,7 +1,7 @@
 #! /bin/bash 
 
 #Author : Akash Suchak
-#Sort the results to show computation Result in the Descending Order
+#Sort the results to show computation Result in the Ascending Order
 
 #User Input assign to variables
 read -p "Enter Value of A : " a
@@ -14,7 +14,7 @@ declare -A results_expr
 #Deaclring Empty Array
 valuesOfDict=()
 
-#Condition to checck User Inputs are integer or not then we calculate
+#Condition to checck User Inputs are integer or not then we calculate, store in dictionary
 if [[ $a ]] && [[ $b ]] && [[ $c ]] && [ $a -eq $a 2>/dev/null ] && [ $b -eq $b 2>/dev/null ] && [ $c -eq $c 2>/dev/null ]; then
 	result1=`awk -v a=$a -v b=$b -v c=$c 'BEGIN{result=(a + b * c); print result}' `
 	results_expr[expr1]=$result1
@@ -37,4 +37,9 @@ add_values=`echo ${results_expr[@]}`
 valuesOfDict=($add_values)
 
 #Display Array Values in Descending orders
+echo "Descending Order"
 printf '%.2f\n' "${valuesOfDict[@]}" | sort -gr
+
+#Display Array Values in Ascending orders
+echo "Ascending Order"
+printf '%.2f\n' "${valuesOfDict[@]}" | sort -g
